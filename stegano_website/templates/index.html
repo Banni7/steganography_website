@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Steganography</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>🔐 Image Steganography</h1>
+        <p>Hide and retrieve secret messages in images.</p>
+
+        <div class="form-container">
+            <!-- Encryption Form -->
+            <div class="form-box">
+                <h2>Encrypt Message</h2>
+                <form action="/encrypt" method="post" enctype="multipart/form-data">
+                    <input type="file" name="image" required><br>
+                    <input type="text" name="message" placeholder="Enter secret message" required><br>
+                    <input type="text" name="password" placeholder="Enter password" required><br>
+                    <button type="submit">Encrypt</button>
+                </form>
+
+                {% if encrypted_result %}
+                    <div class="result">{{ encrypted_result | safe }}</div>
+                {% endif %}
+            </div>
+
+            <!-- Decryption Form -->
+            <div class="form-box">
+                <h2>Decrypt Message</h2>
+                <form action="/decrypt" method="post" enctype="multipart/form-data">
+                    <input type="file" name="image" required><br>
+                    <input type="text" name="password" placeholder="Enter password" required><br>
+                    <button type="submit">Decrypt</button>
+                </form>
+
+                {% if decrypted_result %}
+                    <div class="result">{{ decrypted_result | safe }}</div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
