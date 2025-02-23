@@ -11,13 +11,14 @@
     <div class="container">
         <h1>🔐 Image Steganography</h1>
         <p>Hide and retrieve secret messages in images.</p>
+        <p style="color: red; font-weight: bold;">⚠️ Please use PNG format images only.</p>
 
         <div class="form-container">
             <!-- Encryption Form -->
             <div class="form-box">
                 <h2>Encrypt Message</h2>
                 <form action="/encrypt" method="post" enctype="multipart/form-data">
-                    <input type="file" name="image" required><br>
+                    <input type="file" name="image" accept=".png" required><br>
                     <input type="text" name="message" placeholder="Enter secret message" required><br>
                     <input type="text" name="password" placeholder="Enter password" required><br>
                     <button type="submit">Encrypt</button>
@@ -32,7 +33,7 @@
             <div class="form-box">
                 <h2>Decrypt Message</h2>
                 <form action="/decrypt" method="post" enctype="multipart/form-data">
-                    <input type="file" name="image" required><br>
+                    <input type="file" name="image" accept=".png" required><br>
                     <input type="text" name="password" placeholder="Enter password" required><br>
                     <button type="submit">Decrypt</button>
                 </form>
