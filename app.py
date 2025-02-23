@@ -115,5 +115,7 @@ def decrypt():
     else:
         return render_template("index.html", encrypted_result="", decrypted_result="❌ Incorrect password!")
 
+port = int(os.environ.get("PORT", 5000))  # Get PORT from Render, default to 5000
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0", port=port)  # Use correct host and port
